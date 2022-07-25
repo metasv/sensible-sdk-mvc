@@ -1,6 +1,6 @@
-import { bsv } from "scryptlib";
-import { CodeError, ErrCode } from "../common/error";
-import { Net } from "../net";
+import {bsv} from "scryptlib";
+import {CodeError, ErrCode} from "../common/error";
+import {Net} from "../net";
 import {
   API_NET,
   AuthorizationOption,
@@ -12,6 +12,7 @@ import {
   SA_utxo,
   SensibleApiBase,
 } from "./index";
+
 type ResData = {
   code: number;
   data: any;
@@ -43,7 +44,7 @@ export class MetaSV implements SensibleApiBase {
   publicKey: any;
   constructor(apiNet: API_NET, serverBase?: string) {
     if (apiNet == API_NET.MAIN) {
-      this.serverBase = "https://apiv2.metasv.com";
+      this.serverBase = "https://api-mvc.metasv.com";
     } else {
       throw new CodeError(
         ErrCode.EC_SENSIBLE_API_ERROR,
@@ -89,11 +90,6 @@ export class MetaSV implements SensibleApiBase {
         "MetaSV-Nonce": nonce,
         "MetaSV-Signature": sigEncoded,
       };
-    } else {
-      throw new CodeError(
-        ErrCode.EC_SENSIBLE_API_ERROR,
-        "MetaSV should be authorized to access api."
-      );
     }
     return headers;
   }
