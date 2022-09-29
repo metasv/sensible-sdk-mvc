@@ -46,10 +46,7 @@ export class MetaSV implements SensibleApiBase {
     if (apiNet == API_NET.MAIN) {
       this.serverBase = "https://api-mvc.metasv.com";
     } else {
-      throw new CodeError(
-        ErrCode.EC_SENSIBLE_API_ERROR,
-        "metasv only support mainnet"
-      );
+      this.serverBase = "https://api-mvc-testnet.metasv.com";
     }
     if (serverBase) {
       this.serverBase = serverBase;
